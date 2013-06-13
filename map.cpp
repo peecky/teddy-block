@@ -48,9 +48,9 @@ void Map::moveTile(int src_x, int src_y, int dst_x, int dst_y)
 	if(src_y < 0 || src_y >= MAP_HEIGHT) return;
 	if(dst_y < 0 || dst_y >= MAP_HEIGHT) return;
 
-	tile[dst_y][dst_x] = tile[src_y][src_x];	// Å¸ÀÏÀ» µ¤¾î ¾¸
+	tile[dst_y][dst_x] = tile[src_y][src_x];	// íƒ€ì¼ì„ ë®ì–´ ì”€
 
-	// ¿øº» Å¸ÀÏÀº ÃÊ±âÈ­, except type
+	// ì›ë³¸ íƒ€ì¼ì€ ì´ˆê¸°í™”, except type
 	tile[src_y][src_x].isflash = false;
 	tile[src_y][src_x].ismoving = false;
 	tile[src_y][src_x].isred = false;
@@ -155,7 +155,7 @@ bool Map::Update()
 			int tempnumber = 1;
 			if(tile[i][j].type != Tile::EMPTY && tile[i][j].type != Tile::GOING &&
 				AdjacencyTest(j, i, tile[i][j].type, Tile::NONE, tempnumber) == true)
-				tile[i][j].isflash = true;	// °°Àº µµÇüÀÌ 4°³°¡ ÀÎÁ¢ÇÒ °æ¿ì
+				tile[i][j].isflash = true;	// ê°™ì€ ë„í˜•ì´ 4ê°œê°€ ì¸ì ‘í•  ê²½ìš°
 
 			if(tile[i][j].isflash == true) {
 				tile[i][j].isred = !(tile[i][j].isred);

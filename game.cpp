@@ -46,7 +46,7 @@ void Game::Display()
 	glClear( GL_COLOR_BUFFER_BIT );
 	glLoadIdentity();
 
-	double teddy_x = 0, teddy_y = 0;	// character centered view ÀÏ ¶§ ½ÃÁ¡ °è»êÇÏ´Â º¯¼ö
+	double teddy_x = 0, teddy_y = 0;	// character centered view ì¼ ë•Œ ì‹œì  ê³„ì‚°í•˜ëŠ” ë³€ìˆ˜
 	double teddy_status = kuma->getMovingStatus();
 	if(teddy_moving == true) {
 		switch(kuma->getDest()) {
@@ -405,11 +405,11 @@ void Game::setMatrixProperties(int x, int y)
 
 bool Game::checkGameOver()
 {
-	if( map.getTile( cursor_x, cursor_y ) == Tile::EMPTY )	return true;	// character¹Ø¿¡ firgure°¡ ¾øÀ» ¶§
+	if( map.getTile( cursor_x, cursor_y ) == Tile::EMPTY )	return true;	// characterë°‘ì— firgureê°€ ì—†ì„ ë•Œ
 
 	for(int i = 0; i < MAP_HEIGHT; i++)
 		for(int j = 0; j < MAP_WIDTH; j++)
 			if(map.getTile(j, i) == Tile::EMPTY || map.getTile(j, i) == Tile::GOING || map.isFlash(j, i) == true)
-				return false;	// °¡µæÃ¡À» ¶§
+				return false;	// ê°€ë“ì°¼ì„ ë•Œ
 	return true;
 }

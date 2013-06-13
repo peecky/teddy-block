@@ -13,7 +13,7 @@
 struct Tile {
 	enum Type {EMPTY = 0, SPHERE = 1, CONE = 2, CUBE = 3, GOING = 4};
 	Type type;
-	bool isflash;	// ¹İÂ¦ÀÌ´Â°¡?
+	bool isflash;	// ë°˜ì§ì´ëŠ”ê°€?
 	bool isred;	// red/black Toggle
 	bool ismoving;
 	enum Direction {UP, LEFT, DOWN, RIGHT, NONE};
@@ -47,7 +47,7 @@ private:
 	int combo;
 	int is_combo;
 	int max_combo;
-	bool AdjacencyTest(int x, int y, Tile::Type, Tile::Direction from, int& count);	// °°Àº µµÇü 4°³ ÀÎÁ¢¼º Ã¼Å©
+	bool AdjacencyTest(int x, int y, Tile::Type, Tile::Direction from, int& count);	// ê°™ì€ ë„í˜• 4ê°œ ì¸ì ‘ì„± ì²´í¬
 };
 
 #endif
