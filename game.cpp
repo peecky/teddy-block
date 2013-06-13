@@ -40,6 +40,8 @@ static int timeGetTime() {
 
 void Game::Display()
 {
+	if (state == INIT) return;
+
 	glClearColor(56.0/255.0, 123.0/255.0, 177.0/255.0, 0.0);	// set Background color
 	glClear( GL_COLOR_BUFFER_BIT );
 	glLoadIdentity();
