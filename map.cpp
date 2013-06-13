@@ -49,7 +49,7 @@ void Map::moveTile(int src_x, int src_y, int dst_x, int dst_y)
 	if(dst_y < 0 || dst_y >= MAP_HEIGHT) return;
 
 	tile[dst_y][dst_x] = tile[src_y][src_x];	// 타일을 덮어 씀
-	
+
 	// 원본 타일은 초기화, except type
 	tile[src_y][src_x].isflash = false;
 	tile[src_y][src_x].ismoving = false;
@@ -153,7 +153,7 @@ bool Map::Update()
 	for(i = 0; i < MAP_HEIGHT; i++)
 		for(int j = 0; j < MAP_WIDTH; j++) {
 			int tempnumber = 1;
-			if(tile[i][j].type != Tile::EMPTY && tile[i][j].type != Tile::GOING && 
+			if(tile[i][j].type != Tile::EMPTY && tile[i][j].type != Tile::GOING &&
 				AdjacencyTest(j, i, tile[i][j].type, Tile::NONE, tempnumber) == true)
 				tile[i][j].isflash = true;	// 같은 도형이 4개가 인접할 경우
 

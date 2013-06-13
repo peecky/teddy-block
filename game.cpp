@@ -71,7 +71,7 @@ void Game::Display()
 		0.0 + (static_view == false)*(FIGURE_SIZE * (cursor_y - MAP_WIDTH/2.0 + teddy_y)),
 		0.0,
 		0.0, 0.0, 1.0 );
-	
+
 	if(state == START) {
 		DrawMap();
 		kuma->Draw();
@@ -117,19 +117,19 @@ void Game::Write_combo(){
 	glLoadIdentity();
 	if( state == Game::END ) glColor3f( ( rand()%256 / 255.0 ),( rand()%256 / 255.0 ),( rand()%256 / 255.0 ) );
 	else glColor3f( 0.0, 0.0, 0.0 );
-	
+
 	glRasterPos2f( -2, 8 );
 	write_words( "Max combo : " );
 	write_number( map.show_combomx() );
 	if( map.show_combo() < 2 ) return;
-	
+
 	if( map.show_combo() >= 10 && map.show_combo() < 20 ) glColor3f( 251/255.0, 216/255.0, 51/255.0 );
 	else if( map.show_combo() >= 20 && map.show_combo() < 30) glColor3f( 255/255.0, 128/255.0, 0/255.0 );
 	else if( map.show_combo() >= 30 ) glColor3f( 1.0, 0.0, 0.0 );
 	else glColor3f( 0.0, 0.0, 0.0 );
 
 	glRasterPos2f( -2, 9 );
-	write_number( map.show_combo() ); 
+	write_number( map.show_combo() );
 	write_words( "Combo!!" );
 }
 
@@ -153,7 +153,7 @@ void Game::Write_score(){
 	else glColor3f( 0.5, 0.2, 0.0 );
 
 	//glRasterPos2f( -2, -8 );
-	//write_words( "Score : " ); 
+	//write_words( "Score : " );
 	//write_number( score );
 
 	glRasterPos2f( -3, -9 );
@@ -162,16 +162,16 @@ void Game::Write_score(){
 
 	glColor3f( 0.5, 0.9, 0.3 );
 	glRasterPos2f( -8, -8 );
-	write_words( "LEVEL : " ); 
+	write_words( "LEVEL : " );
 
 	if( level<20 ) write_number( level );
 	else write_words( "HELL MODE" );
 }
 
-	
+
 
 void Game::DrawTeddy(){
-	kuma = new Teddy( cursor_x, cursor_y, Teddy::down ); 
+	kuma = new Teddy( cursor_x, cursor_y, Teddy::down );
 }
 
 void Game::Idle()
@@ -180,7 +180,7 @@ void Game::Idle()
 		Display();
 		return;
 	}
-	
+
 	switch(state) {
 	case INIT:
 		Initialize();
@@ -204,7 +204,7 @@ void Game::Reshape(int w, int h)
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
 	glOrtho(-VIEW_PIX, VIEW_PIX, -VIEW_PIX, VIEW_PIX, -VIEW_PIX, VIEW_PIX);
-	
+
 	glMatrixMode ( GL_MODELVIEW );
 	glLoadIdentity();
 }
@@ -213,7 +213,7 @@ void Game::SpecialKey(int key, int x, int y)
 {
 	if(work == false) return;
 	if( teddy_moving == true) return;	// while moving, ignore input
-	
+
 	switch(key) {
 	case GLUT_KEY_UP:
 		if(cursor_y >= MAP_HEIGHT-1) break;	// bound check
@@ -278,7 +278,7 @@ void Game::KeyInput(unsigned char key, int x, int y)
 	eye_z = sin(phi);
 
 	Reshape(window_w, window_h);
-	
+
 	Idle();
 }
 
@@ -318,7 +318,7 @@ void Game::RunGame()
 
 	figure_moving = map.Update();
 	if( teddy_moving == true ) teddy_moving = kuma->Move();
-	
+
 	int temp_score = map.ScoreUpdate();
 	score += map.show_combo() * map.show_combo() * temp_score * temp_score;
 	playtime += TIMEFACTOR / 1000.0;
@@ -406,7 +406,7 @@ void Game::setMatrixProperties(int x, int y)
 bool Game::checkGameOver()
 {
 	if( map.getTile( cursor_x, cursor_y ) == Tile::EMPTY )	return true;	// character밑에 firgure가 없을 때
-			
+
 	for(int i = 0; i < MAP_HEIGHT; i++)
 		for(int j = 0; j < MAP_WIDTH; j++)
 			if(map.getTile(j, i) == Tile::EMPTY || map.getTile(j, i) == Tile::GOING || map.isFlash(j, i) == true)

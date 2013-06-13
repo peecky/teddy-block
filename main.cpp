@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(Game::Display);
 	glutSpecialFunc(Game::SpecialKey);
 	glutKeyboardFunc(Game::KeyInput);
-	
+
 	glutMainLoop();
 
 	return 0;

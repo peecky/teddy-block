@@ -19,7 +19,7 @@
 
 class Teddy{
 
-public:	 
+public:
 	void count();	// read the file "teddy.obj"
 	enum dest{
 	up, down, right, left

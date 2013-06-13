@@ -86,16 +86,16 @@ void Teddy::count(){
 	char check;
 	double temp;
 	int temp2;
-	
+
 	obj.open("teddy.obj", std::ios::in);
 	if(!obj) {
 		//MessageBox(NULL, "Cannot find teddy.obj", "Error", MB_ICONERROR | MB_OK);
 		std::cerr << "Cannot find teddy.obj" << std::endl;
 		exit(0);
 	}
-	
+
 	//count the number of vertex
-	while(1){	
+	while(1){
 		obj>>check;
 		if( check == 'v' ){
 			number++;
@@ -103,46 +103,46 @@ void Teddy::count(){
 			obj>>temp;
 			obj>>temp;
 		}
-		
-		else break;	
+
+		else break;
 	}
-	
+
 	obj.close();
-	
+
 	obj.open( "teddy.obj", std::ios::in );
-	
+
 	vertex = new GLdouble * [number];
-	
+
 	//store the position of vertex
 	int i;
 	for( i = 0; i < number ; i++ ){
-		
+
 		vertex[i] = new GLdouble [3];
 		obj>>check;
 		obj>>vertex[i][0];
 		obj>>vertex[i][1];
 		obj>>vertex[i][2];
 	}
-	
+
 	number = 0;
-	
+
 	//do same thing on the face also
-	while(1){	
+	while(1){
 		if( obj>>check ){
 			number++;
 			obj>>temp2;
 			obj>>temp2;
 			obj>>temp2;
 		}
-		else break;	
+		else break;
 	}
-	
+
 	obj.close();
-	
+
 	obj.open( "teddy.obj", std::ios::in );
-	
+
 	face = new int * [number];
-	
+
 	while(1){
 		obj>>check;
 		if( check == 'f' )
@@ -153,11 +153,11 @@ void Teddy::count(){
 			obj>>temp;
 		}
 	}
-	
+
 	for( i = 0; i < number ; i++ ){
-		
+
 		face[i] = new int [3];
-		
+
 		obj>>face[i][0];
 		obj>>face[i][1];
 		obj>>face[i][2];
