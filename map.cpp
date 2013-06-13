@@ -121,9 +121,10 @@ void Map::setDirection(int x, int y, Tile::Direction direction)
 bool Map::Update()
 {
 	bool flag = false;	// return value
+	int i;
 	addscore = 0;	// score to add
 
-	for(int i = 0; i < MAP_HEIGHT; i++)
+	for(i = 0; i < MAP_HEIGHT; i++)
 		for(int j = 0; j < MAP_WIDTH; j++) {
 			if(tile[i][j].ismoving == true) {
 				tile[i][j].movestate--;

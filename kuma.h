@@ -3,12 +3,17 @@
 #ifndef KUMA_H
 #define KUMA_H
 
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
 #include <windows.h>
 #include <gl/glut.h>
 #include <gl/gl.h>
+#endif
 
-#include <fstream.h>
-#include <iostream.h>
+#include <fstream>
+#include <iostream>
 
 #define Ted 1
 

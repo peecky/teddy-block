@@ -1,6 +1,7 @@
 // game.cpp
 
 #include <cmath>
+#include <sys/time.h>
 
 #include "game.h"
 
@@ -26,6 +27,16 @@ bool Game::static_view = true;
 Teddy *Game::kuma;
 
 int level = 20;
+
+static int timeGetTime() {
+	static time_t init_sec = 0;
+	timeval tv;
+	gettimeofday(&tv, NULL);
+	if (init_sec == 0) {
+		init_sec = tv.tv_sec;
+	}
+	return (tv.tv_sec - init_sec) * 1000 + tv.tv_usec / 1000;
+}
 
 void Game::Display()
 {
@@ -92,8 +103,8 @@ void write_number( int score ){
 	}
 }
 
-void write_words( char *string ){
-	while( *string != NULL ){
+void write_words( const char *string ){
+	while( *string != '\0' ){
 		glutBitmapCharacter( GLUT_BITMAP_TIMES_ROMAN_24 , *string );
 		string++;
 	}

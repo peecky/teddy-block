@@ -81,15 +81,16 @@ void Teddy::Draw(bool isgameover){
 
 void Teddy::count(){
 
-	ifstream obj;
+	std::ifstream obj;
 	int number=0;
 	char check;
 	double temp;
 	int temp2;
 	
-	obj.open("teddy.obj", ios::nocreate);
+	obj.open("teddy.obj", std::ios::in);
 	if(!obj) {
-		MessageBox(NULL, "Cannot find teddy.obj", "Error", MB_ICONERROR | MB_OK);
+		//MessageBox(NULL, "Cannot find teddy.obj", "Error", MB_ICONERROR | MB_OK);
+		std::cerr << "Cannot find teddy.obj" << std::endl;
 		exit(0);
 	}
 	
@@ -108,7 +109,7 @@ void Teddy::count(){
 	
 	obj.close();
 	
-	obj.open( "teddy.obj", ios::nocreate );
+	obj.open( "teddy.obj", std::ios::in );
 	
 	vertex = new GLdouble * [number];
 	
@@ -138,7 +139,7 @@ void Teddy::count(){
 	
 	obj.close();
 	
-	obj.open( "teddy.obj", ios::nocreate );
+	obj.open( "teddy.obj", std::ios::in );
 	
 	face = new int * [number];
 	

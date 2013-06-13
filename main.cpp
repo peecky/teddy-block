@@ -1,8 +1,13 @@
 // main.cpp
 
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
 #include <windows.h>
 #include <gl/gl.h>
 #include <gl/glut.h>
+#endif
 
 #include "game.h"
 
