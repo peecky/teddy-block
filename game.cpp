@@ -26,7 +26,11 @@ double Game::phi = 0.7875;
 bool Game::static_view = true;
 Teddy *Game::kuma;
 
+#ifdef START_FROM_HELL
 int level = 20;
+#else
+int level = 1;
+#endif
 
 static int timeGetTime() {
 	static time_t init_sec = 0;
